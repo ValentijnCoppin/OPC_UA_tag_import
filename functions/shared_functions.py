@@ -9,6 +9,7 @@ def tag_export_to_dict(file_path):
         structured_data = {}
         for line in file:
             line = line.split("//")[0].strip()  # split("//")[0] removes all the comments, strip() removes all the leading and trailing spaces
+            line = line.split(":=")[0].strip()
             if "DATA_BLOCK" in line.upper() and not "END" in line.upper():
                 db = line.split(" ")[-1]
             if not line:
@@ -28,13 +29,13 @@ def tag_export_to_dict(file_path):
             elif key_list: # add tags to the current struct if a struct exists
                 if len(key_list) == 1:
                     key, value = line.split(':')
-                    structured_data[key_list[-1]].update({key.strip(): value.strip()[:-1]})
+                    structured_data[key_list[-1]].update({key.strip(): value.replace(";", "").strip()})
                 elif len(key_list) == 2:
                     key, value = line.split(':')
-                    structured_data[key_list[-2]][key_list[-1]].update({key.strip(): value.strip()[:-1]})
+                    structured_data[key_list[-2]][key_list[-1]].update({key.strip(): value.replace(";", "").strip()})
                 elif len(key_list) == 3:
                     key, value = line.split(':')
-                    structured_data[key_list[-3]][key_list[-2]][key_list[-1]].update({key.strip(): value.strip()[:-1]})
+                    structured_data[key_list[-3]][key_list[-2]][key_list[-1]].update({key.strip(): value.replace(";", "").strip()})
     return structured_data, db
 
 def calculate_new_position(datatype, amount, index):

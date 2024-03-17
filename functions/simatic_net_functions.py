@@ -17,7 +17,7 @@ B;5;Stargate1;;;
     return header
 
 def create_tag(name, data_type, cu_number, db_number, current_index):
-    data_type = data_type.lower()
+    data_type = data_type.lower().strip()
     name = name.lower()
     data_type_index = {
         "string": 8, 
@@ -36,7 +36,7 @@ def create_tag(name, data_type, cu_number, db_number, current_index):
     if "string" in data_type:
         current_index = math.ceil(current_index)
         length_of_string = data_type[data_type.index('[') + 1 : data_type.index(']')]
-        data_type = data_type[: data_type.index('[')]
+        data_type = data_type[: data_type.index('[')].strip()
         output_string = f"""L;6;{name};S7:[{cu_number}]DB{db_number},string{current_index}.{length_of_string};{data_type_index[data_type]};RW;0;0"""    
         new_index = int(current_index) + int(length_of_string) + 2
     elif "bool" in data_type:
@@ -44,7 +44,7 @@ def create_tag(name, data_type, cu_number, db_number, current_index):
         new_index = shared_functions.calculate_new_position(data_type, 1, current_index)
     elif "array" in data_type:
         length = re.search(r'\[\s*(\d+)\s*\.\.\s*(\d+)\s*\]', data_type).group(2)
-        data_type = data_type.split(' ')[-1]
+        data_type = data_type.split(' ')[-1].strip()
         current_index = math.ceil(current_index) if data_type != "bool" else current_index
         output_string = f"""L;6;{name};S7:[{cu_number}]DB{db_number},{data_type}{current_index},{length};{data_type_index["array"]}{data_type_index[data_type]};RW;0;0\n"""
         new_index = shared_functions.calculate_new_position(data_type, length, current_index)
