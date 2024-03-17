@@ -1,0 +1,98 @@
+﻿DATA_BLOCK 59017
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+NON_RETAIN
+   STRUCT 
+      alarm : Array[1..50] of Word;   // Alarms (from PLC program)
+      LotData : Struct   // Shop Order Number
+         SON : String[10];   // Item Number
+         INR : String[15];
+         LotSize : DInt;
+         Spare : DWord;
+         Spare_1 : DWord;
+         Spare_2 : DWord;
+         Spare_3 : DWord;
+      END_STRUCT;
+      General : Struct
+         Mode : Int;
+         RFD : Bool;
+         RFU : Bool;
+         Run : Bool;
+         Idle : Bool;
+         MachineStarted : Bool;   // Machine started
+         ManualMode : Bool;   // Machine is in manual mode
+         PositioningAct : Bool;   // Positioning active
+         PositioningReq : Bool;   // Positioning required by machine
+         ConvBeltsAct : Bool;   // Conveyor belts active
+         LinkConvBeltsAct : Bool;   // Link conveyor belts active
+         SortersAct : Bool;   // Sorters active
+         VesselLevelContrAct : Bool;   // Dosing vessel level control active
+         VesselStirrerAct : Bool;   // Dosing vessel stirrer active
+         ReleaseInfeedAct : Bool;   // Release infeed active
+         IPC100 : Bool;   // 100% IPC
+         RunVesselEmpty : Bool;   // Run dosing vessel empty with set number of cycles
+         RunMachineEmpty : Bool;   // Run machine empty
+         Priming : Bool;   // Priming / Self optimisation
+         SelfOptimisation : Bool;   // Self optimisation
+         Spare_6 : Bool;   // Spare
+         CyclicFlushing : Bool;   // Cyclical Flushing
+         Spare_7 : Bool;   // Spare
+         PermDosing : Bool;   // Mode Permanent dosing
+         PermPlungering : Bool;   // Mode Permanent plunger stopper insertion
+         COP : Bool;   // Run all movements to COP position
+         VHP : Bool;   // VHP
+         Spare_8 : Bool;   // Spare
+         Recirculation : Bool;   // Recirculation
+         RunVesselEmptyPrimBin : Bool;   // Empty dosing vessel into priming bin
+         Spare_9 : Bool;
+         Spare_10 : Bool;
+         Spare_11 : Bool;
+         Spare_12 : Byte;
+         Spare_13 : Byte;
+         Spare_14 : Int;
+         Spare_15 : Int;
+      END_STRUCT;
+      Counters : Struct
+         TotalContainers : DInt;   // Total containers
+         TotalTubs : DInt;   // Total Tubs
+         Tubs : DInt;   // Tubs
+         FilledContainers : DInt;   // Filled containers
+         Reject_3 : Real;
+         Reject_4 : Real;
+         Reject_5 : Real;
+         Spare : Real;
+         Spare_1 : Real;
+         Spare_2 : Real;
+         Spare_3 : Real;
+         Spare_4 : Real;
+         Spare_5 : Real;
+         Spare_6 : Real;
+         Spare_7 : Real;
+         Spare_8 : Real;
+         Spare_9 : Real;
+         Spare_10 : Real;
+         Spare_11 : Real;
+         Spare_12 : Real;
+         Spare_13 : Real;
+         Spare_14 : Real;
+         Spare_15 : Real;
+         Spare_16 : Real;
+         Spare_17 : Real;
+         Spare_18 : Real;
+         Spare_19 : Real;
+         Spare_20 : Real;
+         Spare_21 : Real;
+         Spare_22 : Real;
+      END_STRUCT;
+      Spare : DWord;
+      Spare_1 : DWord;
+      Spare_2 : DWord;
+      Spare_3 : DWord;
+      Spare_4 : DWord;
+   END_STRUCT;
+
+
+BEGIN
+
+END_DATA_BLOCK
+
