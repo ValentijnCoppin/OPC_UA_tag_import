@@ -47,7 +47,7 @@ def create_tag(name, data_type, cu_number, db_number, current_index):
         data_type = data_type.split(' ')[-1].strip()
         current_index = math.ceil(current_index) if data_type != "bool" else current_index
         output_string = f"""L;6;{name};S7:[{cu_number}]DB{db_number},{data_type}{current_index},{length};{data_type_index["array"]}{data_type_index[data_type]};RW;0;0\n"""
-        new_index = shared_functions.calculate_new_position(data_type, length, current_index)
+        new_index = current_index #shared_functions.calculate_new_position(data_type, length, current_index)
         for i in range(int(length)):
             sub_tag, new_index = create_tag(f"{name}[{i}]", data_type, cu_number, db_number, new_index)
             output_string = output_string + sub_tag
