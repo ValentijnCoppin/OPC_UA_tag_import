@@ -7,9 +7,9 @@ def generate_header(cu_number):
 B;1;CU{cu_number};;;\n\
 B;2;meteor;;;\n\
 B;3;header;;;\n\
-B;4;sections;;;\n\
+B;4;contexts;;;\n\
 B;5;Stargate;;;\n\
-B;3;sections;;;\n\
+B;3;contexts;;;\n\
 B;4;Stargate;;;\n\
 B;5;Stargate1;;;
 """    
