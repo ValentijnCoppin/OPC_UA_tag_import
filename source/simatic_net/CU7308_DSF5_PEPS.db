@@ -3,7 +3,7 @@
 VERSION : 0.1
 NON_RETAIN
    STRUCT 
-      alarm : Array[1..50] of Word;   // Alarms (from PLC program)
+      alarms : Array[1..50] of Word;   // Alarms (from PLC program)
       LotData : Struct   // Shop Order Number
          SON : String[10];   // Item Number
          INR : String[15];

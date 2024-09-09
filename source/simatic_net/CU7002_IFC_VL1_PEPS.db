@@ -1,0 +1,180 @@
+﻿DATA_BLOCK "LCom_PepsData"
+{ DB_Accessible_From_OPC_UA := 'FALSE' ;
+ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+NON_RETAIN
+   STRUCT 
+      alarms : Array[1..100] of Word;   // Alarms (from PLC program)
+      LotData_vu1 : Struct   // Shop Order Number
+         SON : String[10];   // Item Number
+         INR : String[15];
+         LotSize : DInt;
+         Spare : DWord;
+         Spare_1 : DWord;
+         Spare_2 : DWord;
+         Spare_3 : DWord;
+      END_STRUCT;
+      General_vu1 : Struct
+         Mode : Int;
+         RFD : Bool;
+         RFU : Bool;
+         Run : Bool;
+         Idle : Bool;
+         MachineStarted : Bool;
+         MACHINE_STANDBY_MODE : Bool;   // Machine in stand by mode (not used)
+         MACHINE_PRODUCTION_MODE : Bool;   // Machine in production mode
+         MACHINE_STOP_EXECUTED : Bool;   // Emergency stop pressed
+         MACHINE_STOP_INFEED : Bool;   // The infeed of the machine is closed
+         MACHINE_STOP_OUTFEED : Bool;   // Outfeed of the machine is full
+         MACHINE_STOP_OPERATOR : Bool;   // Operator stop (not used)
+         MACHINE_SERVICE : Bool;   // Machine Service Mode is active (not used)
+         MACHINE_MANUAL : Bool;   // Machine Manual Mode is active (not used)
+         MACHINE_CLEAN : Bool;   // Machine Clean Mode is active (not used)
+         VERIFICATION_RUN_ACTIVE : Bool;   // Pre production run is active
+         PRODUCTION_RUN_ACTIVE : Bool;   // Production run is active
+         VERIFICATION_RUN_2ND : Bool;   // Second verification run (not used)
+         SPARE_1 : Bool;
+         SPARE_2 : Bool;
+         SPARE_3 : Bool;
+         SPARE_4 : Bool;
+         NO_WEIGHT : Bool;   // Error No weight from scales
+         _100PR_IPC_ACTIVE : Bool;   // 100% IPC is active
+         SPARE_7 : Bool;
+         SPARE : Byte;
+         SET_MACHINE_SPEED : Real;   // Set machine speed (%) => SCADA recipe setpoint
+         ACT_MACHINE_SPEED : DInt;   // Actual machine speed (pcs/m)
+         SET_MIN_MACHINE_SPEED : Int;   // Set min machine speed (%) => SCADA recipe setpoint
+         SET_MAX_MACHINE_SPEED : Int;   // Set max machine speed (%) => SCADA recipe setpoint
+         Spare_14 : Int;
+         Spare_299 : Array[270..299] of Byte;
+      END_STRUCT;
+      LotData_vu2 : Struct   // Shop Order Number
+         SON : String[10];   // Item Number
+         INR : String[15];
+         LotSize : DInt;
+         Spare : DWord;
+         Spare_1 : DWord;
+         Spare_2 : DWord;
+         Spare_3 : DWord;
+      END_STRUCT;
+      General_vu2 : Struct
+         Mode : Int;
+         RFD : Bool;
+         RFU : Bool;
+         Run : Bool;
+         Idle : Bool;
+         MachineStarted : Bool;
+         MACHINE_STANDBY_MODE : Bool;   // Machine in stand by mode (not used)
+         MACHINE_PRODUCTION_MODE : Bool;   // Machine in production mode
+         MACHINE_STOP_EXECUTED : Bool;   // Emergency stop pressed
+         MACHINE_STOP_INFEED : Bool;   // The infeed of the machine is closed
+         MACHINE_STOP_OUTFEED : Bool;   // Outfeed of the machine is full
+         MACHINE_STOP_OPERATOR : Bool;   // Operator stop (not used)
+         MACHINE_SERVICE : Bool;   // Machine Service Mode is active (not used)
+         MACHINE_MANUAL : Bool;   // Machine Manual Mode is active (not used)
+         MACHINE_CLEAN : Bool;   // Machine Clean Mode is active (not used)
+         VERIFICATION_RUN_ACTIVE : Bool;   // Pre production run is active
+         PRODUCTION_RUN_ACTIVE : Bool;   // Production run is active
+         VERIFICATION_RUN_2ND : Bool;   // Second verification run (not used)
+         SPARE_1 : Bool;
+         SPARE_2 : Bool;
+         SPARE_3 : Bool;
+         SPARE_4 : Bool;
+         NO_WEIGHT : Bool;   // Error No weight from scales
+         _100PR_IPC_ACTIVE : Bool;   // 100% IPC is active
+         SPARE_7 : Bool;
+         SPARE : Byte;
+         SET_MACHINE_SPEED : Real;   // Set machine speed (%) => SCADA recipe setpoint
+         ACT_MACHINE_SPEED : DInt;   // Actual machine speed (pcs/m)
+         SET_MIN_MACHINE_SPEED : Int;   // Set min machine speed (%) => SCADA recipe setpoint
+         SET_MAX_MACHINE_SPEED : Int;   // Set max machine speed (%) => SCADA recipe setpoint
+         Spare_14 : Int;
+         Spare_299 : Array[370..399] of Byte;
+      END_STRUCT;
+      Counters : Struct
+         za_betr : Struct   // Betriebsstunden Zähler
+            x_1 : DInt;   // Maschine eingeschaltet
+            x_2 : DInt;   // Hauptantrieb eingeschaltet
+            x_3 : DInt;   // Durchtransportsystem eingeschaltet
+            x_4 : DInt;   // Spare Total machine hour counters 4
+         END_STRUCT;
+         za_total : Struct   // Total Zähler nicht löschbar
+            x_1 : DInt;   // Objekte total
+            x_2 : DInt;   // Spare Total item counters 2
+            x_3 : DInt;   // Spare Total item counters 3
+            x_4 : DInt;   // Spare Total item counters 4
+         END_STRUCT;
+         za : Struct   // Zähler
+            x_1 : DInt;   // Objekte gut
+            x_2 : DInt;   // Objekte Auslauf 1
+            x_3 : DInt;   // Objekte Auslauf 2
+            x_4 : DInt;   // Objekte schlecht
+            x_5 : DInt;   // Objekte Schlechtauslauf 1
+            x_6 : DInt;   // Objekte Schlechtauslauf 2
+            x_7 : DInt;   // Objekte Charge gesamt
+            x_8 : DInt;   // IPC Objekte
+            x_9 : DInt;   // Einregelobjekte
+            x_10 : DInt;   // Objekte gefüllt
+            x_11 : DInt;   // Objekte mit Stopfen
+            x_12 : DInt;   // Objekte gut Formattest
+            x_13 : DInt;   // Dosierungen in Auffangbehälter für Produktverwurf
+            x_14 : DInt;   // Spare Item counters 14
+            x_15 : DInt;   // Objekte schlecht durch Entlüften
+            x_16 : DInt;   // Objekte schlecht durch Dosierstation
+            x_17 : DInt;   // Objekte schlecht durch max. Stillstandszeit Dosierstation abgelaufen
+            x_18 : DInt;   // Objekte schlecht durch Standzeit gefüllte und unverschlossene Objekte
+            x_19 : DInt;   // Objekte schlecht durch Taragewicht außerhalb Toleranz
+            x_20 : DInt;   // Objekte schlecht durch Nettogewicht außerhalb Toleranz
+            x_21 : DInt;   // Objekte schlecht durch instabilen Gewichtswert Waagen
+            x_22 : DInt;   // Objekte schlecht durch Begasen
+            x_23 : DInt;   // Spare Item counters 23
+            x_24 : DInt;   // Spare Item counters 24
+            x_25 : DInt;   // Objekte schlecht durch Stopfenpositionskontrolle Stopfenspalt falsch
+            x_26 : DInt;   // Objekte schlecht durch Stopfenpositionskontrolle Stopfen fehlt
+            x_27 : DInt;   // Objekte schlecht durch Stopfenpositionskontrolle Objekt zu hoch
+            x_28 : DInt;   // Objekte schlecht durch Bördelkappe fehlt vor Bördeln
+            x_29 : DInt;   // Objekte schlecht durch Bördelkappe fehlt nach Bördeln
+            x_30 : DInt;   // Objekte schlecht durch Bördeldruck
+            x_31 : DInt;   // Spare Item counters 31
+            x_32 : DInt;   // Spare Item counters 32
+            x_33 : DInt;   // Spare Item counters 33
+            x_34 : DInt;   // Objekte schlecht durch Gegenkontrolle
+            x_35 : DInt;   // Objekte schlecht durch Tunnel
+            x_36 : DInt;   // Spare Item counters 36
+            x_37 : DInt;   // Spare Item counters 37
+            x_38 : DInt;   // Objekte schlecht durch manuellen Objektverwurf
+            x_39 : DInt;   // Objekte schlecht durch Partikelalarm
+            x_40 : DInt;   // Objekte schlecht durch Objektverwurf vor Einregeln
+            x_41 : DInt;   // Objekte schlecht durch Objektverwurf nach Einregeln
+            x_42 : DInt;   // Spare Item counters 42
+            x_43 : DInt;   // Objekte schlecht durch Objektverwurf Nettogewicht
+            x_44 : DInt;   // Spare Item counters 44
+            x_45 : DInt;   // Spare Item counters 45
+            x_46 : DInt;   // Spare Item counters 46
+            x_47 : DInt;   // Spare Item counters 47
+            x_48 : DInt;   // Spare Item counters 48
+            x_49 : DInt;   // Spare Item counters 49
+            x_50 : DInt;   // Spare Item counters 50
+            x_51 : DInt;   // Spare Item counters 51
+            x_52 : DInt;   // Spare Item counters 52
+            x_53 : DInt;   // Spare Item counters 53
+            x_54 : DInt;   // Spare Item counters 54
+            x_55 : DInt;   // Spare Item counters 55
+            x_56 : DInt;   // Spare Item counters 56
+            x_57 : DInt;   // Spare Item counters 57
+            x_58 : DInt;   // Spare Item counters 58
+            x_59 : DInt;   // Spare Item counters 59
+            x_60 : DInt;   // Spare Item counters 60
+            x_61 : DInt;   // Spare Item counters 61
+            x_62 : DInt;   // Spare Item counters 62
+            x_63 : DInt;   // Spare Item counters 63
+            x_64 : DInt;   // Spare Item counters 64
+         END_STRUCT;
+      END_STRUCT;
+   END_STRUCT;
+
+
+BEGIN
+
+END_DATA_BLOCK
+

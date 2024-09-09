@@ -7,8 +7,8 @@ VERSION : 0.2
 
 
   STRUCT
-   ALARMS : STRUCT
-    ALARM : ARRAY  [1 .. 200 ] OF WORD ;
+   alarms : STRUCT
+    alarms : ARRAY  [1 .. 200 ] OF WORD ;
    END_STRUCT ;
    LOT_DATA : STRUCT
     SON : STRING  [10 ];

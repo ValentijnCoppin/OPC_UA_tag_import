@@ -24,8 +24,10 @@ def tag_export_to_dict(file_path):
                     
                 else:
                     key_list.append(line.split(':')[0].strip())
-                    structured_data[key_list[-2]].update({key_list[-1]: {}})      
-                         
+                    set_nested_value(source_dict=structured_data,
+                                     key_list=key_list,
+                                     value={key_list[-1]: {}})
+
             elif key_list: # add tags to the current struct if a struct exists
                 if len(key_list) == 1:
                     key, value = line.split(':')
@@ -70,4 +72,18 @@ def round_up_to_next_even(number):
         return math.ceil(number)
     else:
         return math.ceil(number / 2) * 2
+
+
+def set_nested_value(source_dict, key_list, value):
+    def _set_value(d, keys, v):
+        if len(keys) == 1:
+            d[keys[0]] = v
+        else:
+            if keys[0] not in d:
+                d[keys[0]] = {}
+            _set_value(d[keys[0]], keys[1:], v)
+
+    result_dict = source_dict.copy()
+    _set_value(result_dict, key_list, value)
+    return result_dict
 
