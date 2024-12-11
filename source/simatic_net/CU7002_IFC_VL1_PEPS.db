@@ -1,4 +1,4 @@
-﻿DATA_BLOCK "LCom_PepsData"
+﻿DATA_BLOCK 59017
 { DB_Accessible_From_OPC_UA := 'FALSE' ;
  S7_Optimized_Access := 'FALSE' }
 VERSION : 0.1
